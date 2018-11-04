@@ -1,13 +1,24 @@
 export default class Line {
-    constructor(lineNum, type, name='', value=''){
+    constructor(lineNum, lineType){
         this.lineNum = lineNum;
-        this.type = type;
-        this.name = name;
-        this.value = value;
+        this.lineType = lineType;
+        this.name = '';
+        this.value = '';
     }
 
-    toString(){
-        return `<tr><td align=center>${this.lineNum}</td><td align=center>${this.type}</td><td align=center>${this.name}</td><td align=center>${this.value}</td></tr>`;
+    toHtmlLineAttribute(attribute){
+        const htmlLineAttribute = document.createElement('td');
+        htmlLineAttribute.setAttribute('align', 'center');
+        htmlLineAttribute.innerHTML = attribute;
+        return htmlLineAttribute;
+    }
+
+    toHtml(){
+        const htmlLineNum = this.toHtmlLineAttribute(this.lineNum);
+        const htmlLineType = this.toHtmlLineAttribute(this.lineType);
+        const htmlLineName = this.toHtmlLineAttribute(this.name);
+        const htmlLineValue = this.toHtmlLineAttribute(this.value);
+        return ({ htmlLineNum,htmlLineType,htmlLineName, htmlLineValue });
     }
 
 }
