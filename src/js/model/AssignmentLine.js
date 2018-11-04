@@ -8,8 +8,8 @@ export default class FunctionLine extends Line{
         const { left , right } = object;
         const {name} = left;
         const {value} = right;
-        this.name = name;
-        this.value = value;
+        this.lineName = name;
+        this.lineValue = value;
         
     }
 }

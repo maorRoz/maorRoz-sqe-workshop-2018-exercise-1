@@ -6,6 +6,6 @@ export default class ParamLine extends Line{
     constructor(lineNum, object){
         super(lineNum, type);
         const { name } = object;
-        this.name = name;
+        this.lineName = name;
     }
 }

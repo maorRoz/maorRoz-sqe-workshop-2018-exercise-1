@@ -8,8 +8,8 @@ const toHtmlLineAttribute = (attribute) => {
 const rowToHtml = (row) => {
     const htmlLineNum = toHtmlLineAttribute(row.lineNum);
     const htmlLineType = toHtmlLineAttribute(row.lineType);
-    const htmlLineName = toHtmlLineAttribute(row.name);
-    const htmlLineValue = toHtmlLineAttribute(row.value);
+    const htmlLineName = toHtmlLineAttribute(row.lineName);
+    const htmlLineValue = toHtmlLineAttribute(row.lineValue);
     return ({ htmlLineNum,htmlLineType,htmlLineName, htmlLineValue });
 };
 

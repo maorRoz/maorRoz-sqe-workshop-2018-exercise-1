@@ -13,4 +13,17 @@ export default class ElementsTable{
     get CurrentLineNum(){
         return this.currentLineNum;
     }
+
+    increaseLine(){
+        this.currentLineNum++;
+    }
+
+    setVariable(variableName,value){
+        const variableIndex = this.elementRows.findIndex(elementRow => elementRow.lineType === 'VariableDeclarator'
+         && elementRow.lineName === variableName);
+        if(variableIndex !== -1){
+            this.elementRows[variableIndex].lineValue = value.toString();
+        }
+    }
+
 }
