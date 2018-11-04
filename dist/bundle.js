@@ -108,42 +108,6 @@ eval("var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!\n * jQ
 
 /***/ }),
 
-/***/ "./src/js/AssignmentLine.js":
-/*!**********************************!*\
-  !*** ./src/js/AssignmentLine.js ***!
-  \**********************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return FunctionLine; });\n/* harmony import */ var _line__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./line */ \"./src/js/line.js\");\n\r\n\r\nconst type = 'AssignmentPattern';\r\n\r\nclass FunctionLine extends _line__WEBPACK_IMPORTED_MODULE_0__[\"default\"]{\r\n    constructor(lineNum, object){\r\n        super(lineNum, type);\r\n        const { left , right } = object;\r\n        const {name} = left;\r\n        const {value} = right;\r\n        this.name = name;\r\n        this.value = value;\r\n        \r\n    }\r\n}\n\n//# sourceURL=webpack:///./src/js/AssignmentLine.js?");
-
-/***/ }),
-
-/***/ "./src/js/FunctionLine.js":
-/*!********************************!*\
-  !*** ./src/js/FunctionLine.js ***!
-  \********************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return FunctionLine; });\n/* harmony import */ var _line__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./line */ \"./src/js/line.js\");\n\r\n\r\nconst type = 'FunctionDeclaration';\r\n\r\nclass FunctionLine extends _line__WEBPACK_IMPORTED_MODULE_0__[\"default\"]{\r\n    constructor(lineNum, object){\r\n        super(lineNum, type);\r\n        const { params} = object;\r\n        const blockStatement = object.body;\r\n        const { name } = object.id;\r\n        this.name = name;\r\n        this.params = params;\r\n        this.body = blockStatement.body; \r\n        \r\n    }\r\n}\n\n//# sourceURL=webpack:///./src/js/FunctionLine.js?");
-
-/***/ }),
-
-/***/ "./src/js/ParamLine.js":
-/*!*****************************!*\
-  !*** ./src/js/ParamLine.js ***!
-  \*****************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return ParamLine; });\n/* harmony import */ var _line__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./line */ \"./src/js/line.js\");\n\r\n\r\nconst type = 'Param';\r\n\r\nclass ParamLine extends _line__WEBPACK_IMPORTED_MODULE_0__[\"default\"]{\r\n    constructor(lineNum, object){\r\n        super(lineNum, type);\r\n        const { name } = object;\r\n        this.name = name;\r\n    }\r\n}\n\n//# sourceURL=webpack:///./src/js/ParamLine.js?");
-
-/***/ }),
-
 /***/ "./src/js/app.js":
 /*!***********************!*\
   !*** ./src/js/app.js ***!
@@ -152,7 +116,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ \"./node_modules/jquery/dist/jquery.js\");\n/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _code_analyzer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./code-analyzer */ \"./src/js/code-analyzer.js\");\n/* harmony import */ var _tabler__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./tabler */ \"./src/js/tabler.js\");\n\r\n\r\n \r\n\r\nconst createParsedCodeTable = (parsedCode) => {\r\n    jquery__WEBPACK_IMPORTED_MODULE_0___default()('#outputTable td').remove();\r\n    const { body } = parsedCode;\r\n    Object(_tabler__WEBPACK_IMPORTED_MODULE_2__[\"default\"])(body);\r\n};\r\n\r\njquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {\r\n    jquery__WEBPACK_IMPORTED_MODULE_0___default()('#codeSubmissionButton').click(() => {\r\n        const codeToParse = jquery__WEBPACK_IMPORTED_MODULE_0___default()('#codePlaceholder').val();\r\n        const parsedCode = Object(_code_analyzer__WEBPACK_IMPORTED_MODULE_1__[\"parseCode\"])(codeToParse);\r\n        jquery__WEBPACK_IMPORTED_MODULE_0___default()('#parsedCode').val(JSON.stringify(parsedCode, null, 2));\r\n        createParsedCodeTable(parsedCode);\r\n    });\r\n});\n\n//# sourceURL=webpack:///./src/js/app.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ \"./node_modules/jquery/dist/jquery.js\");\n/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _code_analyzer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./code-analyzer */ \"./src/js/code-analyzer.js\");\n/* harmony import */ var _controller_elementsTableController__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./controller/elementsTableController */ \"./src/js/controller/elementsTableController.js\");\n\r\n\r\n \r\n\r\nconst createParsedCodeTable = (parsedCode) => {\r\n    jquery__WEBPACK_IMPORTED_MODULE_0___default()('#outputTable td').remove();\r\n    const { body } = parsedCode;\r\n    Object(_controller_elementsTableController__WEBPACK_IMPORTED_MODULE_2__[\"default\"])(body);\r\n};\r\n\r\njquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {\r\n    jquery__WEBPACK_IMPORTED_MODULE_0___default()('#codeSubmissionButton').click(() => {\r\n        const codeToParse = jquery__WEBPACK_IMPORTED_MODULE_0___default()('#codePlaceholder').val();\r\n        const parsedCode = Object(_code_analyzer__WEBPACK_IMPORTED_MODULE_1__[\"parseCode\"])(codeToParse);\r\n        jquery__WEBPACK_IMPORTED_MODULE_0___default()('#parsedCode').val(JSON.stringify(parsedCode, null, 2));\r\n        createParsedCodeTable(parsedCode);\r\n    });\r\n});\n\n//# sourceURL=webpack:///./src/js/app.js?");
 
 /***/ }),
 
@@ -168,39 +132,99 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 
 /***/ }),
 
-/***/ "./src/js/line.js":
-/*!************************!*\
-  !*** ./src/js/line.js ***!
-  \************************/
+/***/ "./src/js/controller/elementsTableController.js":
+/*!******************************************************!*\
+  !*** ./src/js/controller/elementsTableController.js ***!
+  \******************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return Line; });\nclass Line {\r\n    constructor(lineNum, lineType){\r\n        this.lineNum = lineNum;\r\n        this.lineType = lineType;\r\n        this.name = '';\r\n        this.value = '';\r\n    }\r\n\r\n    toHtmlLineAttribute(attribute){\r\n        const htmlLineAttribute = document.createElement('td');\r\n        htmlLineAttribute.setAttribute('align', 'center');\r\n        htmlLineAttribute.innerHTML = attribute;\r\n        return htmlLineAttribute;\r\n    }\r\n\r\n    toHtml(){\r\n        const htmlLineNum = this.toHtmlLineAttribute(this.lineNum);\r\n        const htmlLineType = this.toHtmlLineAttribute(this.lineType);\r\n        const htmlLineName = this.toHtmlLineAttribute(this.name);\r\n        const htmlLineValue = this.toHtmlLineAttribute(this.value);\r\n        return ({ htmlLineNum,htmlLineType,htmlLineName, htmlLineValue });\r\n    }\r\n\r\n}\n\n//# sourceURL=webpack:///./src/js/line.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _model_FunctionLine_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../model/FunctionLine.js */ \"./src/js/model/FunctionLine.js\");\n/* harmony import */ var _model_ElementsTable_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../model/ElementsTable.js */ \"./src/js/model/ElementsTable.js\");\n/* harmony import */ var _model_ParamLine_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../model/ParamLine.js */ \"./src/js/model/ParamLine.js\");\n/* harmony import */ var _model_AssignmentLine_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../model/AssignmentLine.js */ \"./src/js/model/AssignmentLine.js\");\n/* harmony import */ var _view_elementsTableUI__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../view/elementsTableUI */ \"./src/js/view/elementsTableUI.js\");\n\r\n\r\n\r\n\r\n\r\n\r\nlet ElementsTableModel;\r\n\r\nconst functionBodyTabler = (lineNum, body) => {\r\n    for(let i = 0; i < body.length; i++){\r\n        lineTabler(lineNum + 1, body[i]);\r\n    }\r\n};\r\n\r\n\r\nconst functionParamTabler = (lineNum, param) => {\r\n    console.log(param);\r\n    const { type } = param;\r\n    const functionParam = type === 'AssignmentPattern' ? new _model_AssignmentLine_js__WEBPACK_IMPORTED_MODULE_3__[\"default\"](lineNum, param) : new _model_ParamLine_js__WEBPACK_IMPORTED_MODULE_2__[\"default\"](lineNum, param);\r\n    ElementsTableModel.addRow(functionParam);\r\n};\r\n\r\nconst functionTabler = (lineNum,functionObject) => {\r\n    const functionLine = new _model_FunctionLine_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"](lineNum,functionObject);\r\n    ElementsTableModel.addRow(functionLine);\r\n    const { params, body } = functionLine;\r\n    params.forEach(param => functionParamTabler(lineNum, param));\r\n    functionBodyTabler(lineNum, body);\r\n};\r\n\r\n\r\nconst lineTabler = (lineNum, object) =>\r\n{\r\n    console.log(object);\r\n    const { type } = object;\r\n    switch(type){\r\n    case 'FunctionDeclaration':\r\n        functionTabler(lineNum, object); break;\r\n    case 'VariableDeclaration':\r\n    case 'Param':\r\n    default:\r\n    }\r\n};\r\n\r\nconst bodyTabler = (parsedCodeBody) => {\r\n    for(let i = 0 ; i < parsedCodeBody.length ; i++){\r\n        let lineNum  = ElementsTableModel.CurrentLineNum;\r\n        lineTabler(lineNum,parsedCodeBody[i]);\r\n    }\r\n};\r\n\r\n/* harmony default export */ __webpack_exports__[\"default\"] = ((parsedCodeBody) => {\r\n    console.log(parsedCodeBody);\r\n    ElementsTableModel = new _model_ElementsTable_js__WEBPACK_IMPORTED_MODULE_1__[\"default\"]();\r\n    bodyTabler(parsedCodeBody);\r\n    _view_elementsTableUI__WEBPACK_IMPORTED_MODULE_4__[\"clean\"]();\r\n    _view_elementsTableUI__WEBPACK_IMPORTED_MODULE_4__[\"createTable\"](ElementsTableModel);\r\n});\n\n//# sourceURL=webpack:///./src/js/controller/elementsTableController.js?");
 
 /***/ }),
 
-/***/ "./src/js/outputTable.js":
-/*!*******************************!*\
-  !*** ./src/js/outputTable.js ***!
-  \*******************************/
-/*! exports provided: cleanOutputTable, addHtmlLineToOutputTable, getCurrentLineNum */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"cleanOutputTable\", function() { return cleanOutputTable; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"addHtmlLineToOutputTable\", function() { return addHtmlLineToOutputTable; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"getCurrentLineNum\", function() { return getCurrentLineNum; });\n/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ \"./node_modules/jquery/dist/jquery.js\");\n/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);\n\r\n\r\nlet currentLineNum = 1;\r\n\r\nconst cleanOutputTable = () => jquery__WEBPACK_IMPORTED_MODULE_0___default()('#outputTable td').remove();\r\n\r\nconst addHtmlLineToOutputTable = (lineNum, line) => {\r\n    const htmlRow = document.createElement('tr');\r\n    const { htmlLineNum,htmlLineType,htmlLineName, htmlLineValue } = line;\r\n    htmlRow.append(htmlLineNum,htmlLineType,htmlLineName, htmlLineValue);\r\n    jquery__WEBPACK_IMPORTED_MODULE_0___default()('#outputTable').append(htmlRow);\r\n    currentLineNum = lineNum;\r\n};\r\n\r\nconst getCurrentLineNum  = () => currentLineNum;\r\n\n\n//# sourceURL=webpack:///./src/js/outputTable.js?");
-
-/***/ }),
-
-/***/ "./src/js/tabler.js":
-/*!**************************!*\
-  !*** ./src/js/tabler.js ***!
-  \**************************/
+/***/ "./src/js/model/AssignmentLine.js":
+/*!****************************************!*\
+  !*** ./src/js/model/AssignmentLine.js ***!
+  \****************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _FunctionLine_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./FunctionLine.js */ \"./src/js/FunctionLine.js\");\n/* harmony import */ var _outputTable_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./outputTable.js */ \"./src/js/outputTable.js\");\n/* harmony import */ var _ParamLine_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ParamLine.js */ \"./src/js/ParamLine.js\");\n/* harmony import */ var _AssignmentLine_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./AssignmentLine.js */ \"./src/js/AssignmentLine.js\");\n\r\n\r\n\r\n\r\n\r\n\r\nconst functionParamTabler = (lineNum, param) => {\r\n    const { type } = param;\r\n    const functionParam = type === 'AssignmentPattern' ? new _ParamLine_js__WEBPACK_IMPORTED_MODULE_2__[\"default\"](lineNum, param) : new _AssignmentLine_js__WEBPACK_IMPORTED_MODULE_3__[\"default\"](lineNum, param);\r\n    Object(_outputTable_js__WEBPACK_IMPORTED_MODULE_1__[\"addHtmlLineToOutputTable\"])(lineNum,functionParam);\r\n};\r\n\r\nconst functionTabler = (lineNum,functionObject) => {\r\n    const functionLine = new _FunctionLine_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"](lineNum,functionObject);\r\n    Object(_outputTable_js__WEBPACK_IMPORTED_MODULE_1__[\"addHtmlLineToOutputTable\"])(lineNum, functionLine.toHtml());\r\n    const { params, body } = functionLine;\r\n    params.forEach(param => functionParamTabler(lineNum, param));\r\n    body.forEach(statement => lineTabler(lineNum + 1, statement));\r\n};\r\n\r\n\r\nconst lineTabler = (lineNum, object) =>\r\n{\r\n    console.log(object);\r\n    const { type } = object;\r\n    switch(type){\r\n    case 'FunctionDeclaration':\r\n        functionTabler(lineNum, object); break;\r\n    case 'VariableDeclaration':\r\n    case 'Param':\r\n    default:\r\n    }\r\n};\r\n\r\n/* harmony default export */ __webpack_exports__[\"default\"] = ((parsedCodeBody) => {\r\n    console.log(parsedCodeBody);\r\n    for(let i = 0 ; i < parsedCodeBody.length ; i++){\r\n        let lineNum = Object(_outputTable_js__WEBPACK_IMPORTED_MODULE_1__[\"getCurrentLineNum\"])();\r\n        lineTabler(lineNum,parsedCodeBody[i]);\r\n    }\r\n});\n\n//# sourceURL=webpack:///./src/js/tabler.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return FunctionLine; });\n/* harmony import */ var _Line__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Line */ \"./src/js/model/Line.js\");\n\r\n\r\nconst type = 'AssignmentPattern';\r\n\r\nclass FunctionLine extends _Line__WEBPACK_IMPORTED_MODULE_0__[\"default\"]{\r\n    constructor(lineNum, object){\r\n        super(lineNum, type);\r\n        const { left , right } = object;\r\n        const {name} = left;\r\n        const {value} = right;\r\n        this.name = name;\r\n        this.value = value;\r\n        \r\n    }\r\n}\n\n//# sourceURL=webpack:///./src/js/model/AssignmentLine.js?");
+
+/***/ }),
+
+/***/ "./src/js/model/ElementsTable.js":
+/*!***************************************!*\
+  !*** ./src/js/model/ElementsTable.js ***!
+  \***************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return ElementsTable; });\nclass ElementsTable{\r\n    constructor(){\r\n        this.currentLineNum = 1;\r\n        this.elementRows = [];\r\n    }\r\n\r\n    addRow(element){\r\n        this.elementRows.push(element);\r\n        this.currentLineNum = element.lineNum;\r\n        return this.currentLineNum;\r\n    }\r\n\r\n    get CurrentLineNum(){\r\n        return this.currentLineNum;\r\n    }\r\n}\n\n//# sourceURL=webpack:///./src/js/model/ElementsTable.js?");
+
+/***/ }),
+
+/***/ "./src/js/model/FunctionLine.js":
+/*!**************************************!*\
+  !*** ./src/js/model/FunctionLine.js ***!
+  \**************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return FunctionLine; });\n/* harmony import */ var _Line__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Line */ \"./src/js/model/Line.js\");\n\r\n\r\nconst type = 'FunctionDeclaration';\r\n\r\nclass FunctionLine extends _Line__WEBPACK_IMPORTED_MODULE_0__[\"default\"]{\r\n    constructor(lineNum, object){\r\n        super(lineNum, type);\r\n        const { params} = object;\r\n        const blockStatement = object.body;\r\n        const { name } = object.id;\r\n        this.name = name;\r\n        this.params = params;\r\n        this.body = blockStatement.body; \r\n        \r\n    }\r\n}\n\n//# sourceURL=webpack:///./src/js/model/FunctionLine.js?");
+
+/***/ }),
+
+/***/ "./src/js/model/Line.js":
+/*!******************************!*\
+  !*** ./src/js/model/Line.js ***!
+  \******************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return Line; });\nclass Line {\r\n    constructor(lineNum, lineType){\r\n        this.lineNum = lineNum;\r\n        this.lineType = lineType;\r\n        this.name = '';\r\n        this.value = '';\r\n    }\r\n\r\n}\n\n//# sourceURL=webpack:///./src/js/model/Line.js?");
+
+/***/ }),
+
+/***/ "./src/js/model/ParamLine.js":
+/*!***********************************!*\
+  !*** ./src/js/model/ParamLine.js ***!
+  \***********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"default\", function() { return ParamLine; });\n/* harmony import */ var _Line__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Line */ \"./src/js/model/Line.js\");\n\r\n\r\nconst type = 'Param';\r\n\r\nclass ParamLine extends _Line__WEBPACK_IMPORTED_MODULE_0__[\"default\"]{\r\n    constructor(lineNum, object){\r\n        super(lineNum, type);\r\n        const { name } = object;\r\n        this.name = name;\r\n    }\r\n}\n\n//# sourceURL=webpack:///./src/js/model/ParamLine.js?");
+
+/***/ }),
+
+/***/ "./src/js/view/elementRowUI.js":
+/*!*************************************!*\
+  !*** ./src/js/view/elementRowUI.js ***!
+  \*************************************/
+/*! exports provided: createHtmlElementRow */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"createHtmlElementRow\", function() { return createHtmlElementRow; });\nconst toHtmlLineAttribute = (attribute) => {\r\n    const htmlLineAttribute = document.createElement('td');\r\n    htmlLineAttribute.setAttribute('align', 'center');\r\n    htmlLineAttribute.innerHTML = attribute;\r\n    return htmlLineAttribute;\r\n};\r\n\r\nconst rowToHtml = (row) => {\r\n    const htmlLineNum = toHtmlLineAttribute(row.lineNum);\r\n    const htmlLineType = toHtmlLineAttribute(row.lineType);\r\n    const htmlLineName = toHtmlLineAttribute(row.name);\r\n    const htmlLineValue = toHtmlLineAttribute(row.value);\r\n    return ({ htmlLineNum,htmlLineType,htmlLineName, htmlLineValue });\r\n};\r\n\r\nconst createHtmlElementRow = (row) => {\r\n    const htmlRow = document.createElement('tr');\r\n    const { htmlLineNum,htmlLineType,htmlLineName, htmlLineValue } = rowToHtml(row);\r\n    htmlRow.append(htmlLineNum,htmlLineType,htmlLineName, htmlLineValue);\r\n    return htmlRow;\r\n};\n\n//# sourceURL=webpack:///./src/js/view/elementRowUI.js?");
+
+/***/ }),
+
+/***/ "./src/js/view/elementsTableUI.js":
+/*!****************************************!*\
+  !*** ./src/js/view/elementsTableUI.js ***!
+  \****************************************/
+/*! exports provided: clean, createTable */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"clean\", function() { return clean; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"createTable\", function() { return createTable; });\n/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ \"./node_modules/jquery/dist/jquery.js\");\n/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _elementRowUI__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./elementRowUI */ \"./src/js/view/elementRowUI.js\");\n\r\n\r\n\r\nconst table = document.getElementById('elementsTable');\r\n\r\n\r\nconst clean = () => jquery__WEBPACK_IMPORTED_MODULE_0___default()('#elementsTable').find('tr:gt(0)').remove();\r\n\r\nconst createTable = (model) => {\r\n    const { elementRows } = model;\r\n    clean();\r\n    for(let i = 0; i < elementRows.length; i++){\r\n        let htmlElementRow = Object(_elementRowUI__WEBPACK_IMPORTED_MODULE_1__[\"createHtmlElementRow\"])(elementRows[i]);\r\n        table.append(htmlElementRow);\r\n    }\r\n};\r\n\n\n//# sourceURL=webpack:///./src/js/view/elementsTableUI.js?");
 
 /***/ })
 

@@ -1,11 +1,11 @@
 import $ from 'jquery';
 import {parseCode} from './code-analyzer';
-import bodyTabler from './tabler'; 
+import tableController from './controller/elementsTableController'; 
 
 const createParsedCodeTable = (parsedCode) => {
     $('#outputTable td').remove();
     const { body } = parsedCode;
-    bodyTabler(body);
+    tableController(body);
 };
 
 $(document).ready(function () {

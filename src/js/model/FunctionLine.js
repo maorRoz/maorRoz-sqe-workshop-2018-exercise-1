@@ -1,4 +1,4 @@
-import Line from './line';
+import Line from './Line';
 
 const type = 'FunctionDeclaration';
 
