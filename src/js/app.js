@@ -1,15 +1,11 @@
 import $ from 'jquery';
 import {parseCode} from './code-analyzer';
-import lineTabler from './lineTabler';
+import bodyTabler from './tabler'; 
 
-const createParsedCodeTable = (object) => {
+const createParsedCodeTable = (parsedCode) => {
     $('#outputTable td').remove();
-    const { body } = object;
-    console.log(body);
-    const lineNum = 1;
-    for(let i = 0 ; i < body.length ; i++){
-    //  $('outputTable').append(lineTabler(i,body).toHtml());
-    }
+    const { body } = parsedCode;
+    bodyTabler(body);
 };
 
 $(document).ready(function () {
