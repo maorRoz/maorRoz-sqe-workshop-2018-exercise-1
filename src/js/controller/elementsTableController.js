@@ -100,16 +100,21 @@ const lineTabler = (lineNum, object) =>
 };
 
 const bodyTabler = (parsedCodeBody) => {
+    console.log(parsedCodeBody);
     for(let i = 0 ; i < parsedCodeBody.length ; i++){
         let lineNum  = ElementsTableModel.CurrentLineNum;
         lineTabler(lineNum,parsedCodeBody[i]);
     }
 };
 
-export default (parsedCodeBody) => {
-    console.log(parsedCodeBody);
+export const createElementTable = (parsedCode) => {
+    const { body } = parsedCode;
     ElementsTableModel = new ElementsTable();
-    bodyTabler(parsedCodeBody);
+    bodyTabler(body);
+    return ElementsTableModel;
+};
+
+export const implementElementTableUI = () => {
     ElementsTableUI.clean();
     ElementsTableUI.createTable(ElementsTableModel);
 };

@@ -14,6 +14,7 @@ const rowToHtml = (row) => {
 };
 
 export const createHtmlElementRow = (row) => {
+    $()
     const htmlRow = document.createElement('tr');
     const { htmlLineNum,htmlLineType,htmlLineName, htmlLineValue } = rowToHtml(row);
     htmlRow.append(htmlLineNum,htmlLineType,htmlLineName, htmlLineValue);
