@@ -2,7 +2,6 @@
 import { expect } from 'chai';
 import {parseCode} from '../src/js/code-analyzer';
 import { createElementTable } from '../src/js/controller/elementsTableController';
-//import FunctionLine from '../src/js/model/FunctionLine';
 
 let testedElementTable;
 let testedElementRows;
@@ -32,7 +31,7 @@ describe('Function Tests' , () => {
             expect(testedElementRows[0]).to.deep.equal(expectedFunctionLine);
         });
     });
-    describe('Two Functions with no arguments', () => {
+    describe('Two functions with no arguments', () => {
         before(() => {
             makeTestableTable('function hello(){}\nfunction helloAgain(){}');
         });
