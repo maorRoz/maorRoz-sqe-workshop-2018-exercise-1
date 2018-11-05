@@ -102,7 +102,7 @@ const lineTabler = (lineNum, object) =>
 const bodyTabler = (parsedCodeBody) => {
     console.log(parsedCodeBody);
     for(let i = 0 ; i < parsedCodeBody.length ; i++){
-        let lineNum  = ElementsTableModel.CurrentLineNum;
+        let lineNum  = ElementsTableModel.CurrentLineNum + 1;
         lineTabler(lineNum,parsedCodeBody[i]);
     }
 };

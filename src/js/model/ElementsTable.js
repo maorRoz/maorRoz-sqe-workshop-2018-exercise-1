@@ -1,6 +1,6 @@
 export default class ElementsTable{
     constructor(){
-        this.currentLineNum = 1;
+        this.currentLineNum = 0;
         this.elementRows = [];
     }
 
