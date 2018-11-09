@@ -9,7 +9,6 @@ const rowToHtml = (row) => {
     const htmlLineNum = toHtmlLineAttribute(row.lineNum);
     const htmlLineType = toHtmlLineAttribute(row.lineType);
     const htmlLineName = toHtmlLineAttribute(row.lineName);
-    // eslint-disable-next-line no-useless-escape
     const htmlLineCondition = toHtmlLineAttribute(row.lineCondition);
     const htmlLineValue = toHtmlLineAttribute(row.lineValue);
     return ({ htmlLineNum,htmlLineType,htmlLineName,htmlLineCondition, htmlLineValue });

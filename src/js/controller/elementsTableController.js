@@ -1,11 +1,13 @@
-import FunctionLine from '../model/FunctionLine.js';
-import ElementsTable from '../model/ElementsTable.js';
-import AssignmentLine from '../model/AssignmentLine.js';
-import ReturnLine from '../model/ReturnLine.js';
+import FunctionLine from '../model/FunctionLine';
+import ElementsTable from '../model/ElementsTable';
+import AssignmentLine from '../model/AssignmentLine';
+import ReturnLine from '../model/ReturnLine';
 import * as ElementsTableUI from '../view/elementsTableUI';
 import VariableLine from '../model/VariableLine';
-import WhileLine from '../model/WhileLine.js';
-import IfLine from '../model/IfLine.js';
+import WhileLine from '../model/WhileLine';
+import IfLine from '../model/IfLine';
+import ElseIfLine from '../model/ElseIfLine';
+import ElseLine from '../model/ElseLine';
 
 let ElementsTableModel;
 
@@ -27,12 +29,19 @@ const whileStatementTabler = (lineNum, whileStatement) => {
 };
 
 const alternateTabler = (alternate) => {
+    if(!alternate) return;
     const lineNum = ElementsTableModel.CurrentLineNum;
+    const { type } = alternate;
+    if(type === 'IfStatement'){
+        return ifStatementTabler(lineNum + 1, alternate, true);
+    }
+    const elseLine = new ElseLine(lineNum);
+    ElementsTableModel.addRow(elseLine);
     expressionBodyTabler(lineNum,alternate);
 };
 
-const ifStatementTabler = (lineNum, ifStatement) => {
-    const ifLine = new IfLine(lineNum, ifStatement);
+const ifStatementTabler = (lineNum, ifStatement, isElse = false) => {
+    const ifLine = isElse ? new ElseIfLine(lineNum, ifStatement) : new IfLine(lineNum,ifStatement);
     ElementsTableModel.addRow(ifLine);
     const { alternate, consequent} = ifStatement;
     expressionBodyTabler(lineNum , consequent);

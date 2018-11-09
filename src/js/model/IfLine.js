@@ -1,7 +1,7 @@
 import Line from './Line';
 import { extractValue } from '../valueExtractor';
 
-const type = 'while statement';
+const type = 'if statement';
 
 export default class IfLine extends Line{
     constructor(lineNum, statement){
