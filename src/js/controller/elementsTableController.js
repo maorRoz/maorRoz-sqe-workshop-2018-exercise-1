@@ -57,7 +57,6 @@ const variableDeclaratorTabler = (lineNum, declarationsContainer) => {
 };
 
 const functionParamTabler = (lineNum, param) => {
-    console.log(param);
     ElementsTableModel.addRow(new VariableLine(lineNum, param));
 };
 
@@ -70,7 +69,6 @@ const functionTabler = (lineNum,functionObject) => {
 };
 
 const expressionBodyTabler = (lineNum, objectStatements) => {
-    console.log(objectStatements);
     const { type, body } = objectStatements;
     if(type !== 'BlockStatement'){
         return lineTabler(lineNum + 1, objectStatements);
@@ -85,7 +83,6 @@ const expressionBodyTabler = (lineNum, objectStatements) => {
 // eslint-disable-next-line complexity
 const lineTabler = (lineNum, object) =>
 {
-    console.log(object);
     const { type } = object;
     switch(type){
     case 'FunctionDeclaration':
@@ -105,7 +102,6 @@ const lineTabler = (lineNum, object) =>
 };
 
 const bodyTabler = (parsedCodeBody) => {
-    console.log(parsedCodeBody);
     for(let i = 0 ; i < parsedCodeBody.length ; i++){
         let lineNum  = ElementsTableModel.CurrentLineNum + 1;
         lineTabler(lineNum,parsedCodeBody[i]);
