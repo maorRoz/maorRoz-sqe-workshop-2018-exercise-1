@@ -30,7 +30,7 @@ export const extractValue = (expression, parenthesis = false) => {
     case 'Identifier': 
         return expression.name;
     case 'Literal':
-        return expression.value;
+        return expression.value.toString();
     default:
     }
 };

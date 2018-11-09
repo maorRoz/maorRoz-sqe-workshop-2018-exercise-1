@@ -25,3 +25,13 @@ export const createExpectedVariable = (lineNum,lineName) => {
         lineValue: ''
     };
 };
+
+export const createExpectedReturnStatement = (lineNum,lineValue) => {
+    return {
+        lineNum,
+        lineType: 'return statement',
+        lineName: '',
+        lineCondition: '',
+        lineValue
+    };
+};
