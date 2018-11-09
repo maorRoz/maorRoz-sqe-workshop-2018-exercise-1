@@ -1,11 +1,10 @@
 import Line from './Line';
 
-const type = 'variable declarator';
+const type = 'variable declaration';
 
 export default class VariableLine extends Line{
     constructor(lineNum, object){
         super(lineNum, type);
-        const { id } = object;
-        this.lineName = id.name;
+        this.lineName = object.name;
     }
 }

@@ -6,6 +6,9 @@ import VariableLine from '../model/VariableLine';
 
 let ElementsTableModel;
 
+const expressionStatementTabler = (lineNum,expression) => {
+};
+
 const whileStatementTabler = (lineNum, whileStatement) => {
     expressionBodyTabler(lineNum,whileStatement.body);
 };
@@ -24,22 +27,10 @@ const ifStatementTabler = (lineNum, ifStatement) => {
 const variableDeclaratorTabler = (lineNum, declarationsContainer) => {
     const { declarations } = declarationsContainer;
     for(let i = 0; i < declarations.length; i++){
-        const variableLine = new VariableLine(lineNum, declarations[i]);
+        const variableLine = new VariableLine(lineNum, declarations[i].id);
         ElementsTableModel.addRow(variableLine);
     }
 };
-
-const expressionBodyTabler = (lineNum, objectStatements) => {
-    console.log(objectStatements);
-    const { type, body } = objectStatements;
-    if(type !== 'BlockStatement'){
-        return lineTabler(lineNum +1, objectStatements);
-    }
-    for(let i = 0; i < body.length; i++){
-        lineTabler(lineNum + 1, body[i]);
-    }
-};
-
 
 const functionParamTabler = (lineNum, param) => {
     console.log(param);
@@ -52,6 +43,18 @@ const functionTabler = (lineNum,functionObject) => {
     const { params, body } = functionObject;
     params.forEach(param => functionParamTabler(lineNum, param));
     expressionBodyTabler(lineNum, body);
+};
+
+const expressionBodyTabler = (lineNum, objectStatements) => {
+    console.log(objectStatements);
+    const { type, body } = objectStatements;
+    if(type !== 'BlockStatement'){
+        return lineTabler(lineNum + 1, objectStatements);
+    }
+    for(let i = 0; i < body.length; i++){
+        lineNum = ElementsTableModel.CurrentLineNum;
+        lineTabler(lineNum + 1, body[i]);
+    }
 };
 
 
