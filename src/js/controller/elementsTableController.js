@@ -4,6 +4,8 @@ import AssignmentLine from '../model/AssignmentLine.js';
 import ReturnLine from '../model/ReturnLine.js';
 import * as ElementsTableUI from '../view/elementsTableUI';
 import VariableLine from '../model/VariableLine';
+import WhileLine from '../model/WhileLine.js';
+import IfLine from '../model/IfLine.js';
 
 let ElementsTableModel;
 
@@ -19,6 +21,8 @@ const expressionStatementTabler = (lineNum, expressionStatement) => {
 };
 
 const whileStatementTabler = (lineNum, whileStatement) => {
+    const whileLine = new WhileLine(lineNum, whileStatement);
+    ElementsTableModel.addRow(whileLine);
     expressionBodyTabler(lineNum,whileStatement.body);
 };
 
@@ -28,6 +32,8 @@ const alternateTabler = (alternate) => {
 };
 
 const ifStatementTabler = (lineNum, ifStatement) => {
+    const ifLine = new IfLine(lineNum, ifStatement);
+    ElementsTableModel.addRow(ifLine);
     const { alternate, consequent} = ifStatement;
     expressionBodyTabler(lineNum , consequent);
     alternateTabler(alternate);
