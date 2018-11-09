@@ -1,5 +1,5 @@
-import { parseCode } from '../src/js/code-analyzer';
-import { createElementTable } from '../src/js/controller/elementsTableController';
+import { parseCode } from './code-analyzer';
+import { createElementTable } from './controller/elementsTableController';
 
 export const makeTestableTable = (code) => {
     const parsedCode = parseCode(code);

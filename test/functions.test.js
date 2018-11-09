@@ -6,7 +6,7 @@ describe('Function Tests' , () => {
     let testedElementTable;
     let testedElementRows;
     describe('Function with no arguments', () => {
-        before(() => {
+        beforeEach(() => {
             testedElementTable = makeTestableTable('function hello(){}');
             testedElementRows = testedElementTable.elementRows;
         });
@@ -16,8 +16,9 @@ describe('Function Tests' , () => {
         it('Function Line', () => {
             const expectedFunctionLine = {
                 lineNum : 1,
-                lineType: 'FunctionDeclaration',
+                lineType: 'function declaration',
                 lineName: 'hello',
+                lineCondition: '',
                 lineValue: ''
             };
             expect(testedElementRows[0]).to.deep.equal(expectedFunctionLine);
@@ -25,7 +26,8 @@ describe('Function Tests' , () => {
     });
     describe('Two functions with no arguments', () => {
         before(() => {
-            makeTestableTable('function hello(){}\nfunction helloAgain(){}');
+            testedElementTable = makeTestableTable('function hello(){}\nfunction helloAgain(){}');
+            testedElementRows = testedElementTable.elementRows;
         });
         it('Element Table length', () => {
             expect(testedElementRows).to.have.lengthOf(2);
@@ -33,14 +35,16 @@ describe('Function Tests' , () => {
         it('Two Functions Line', () => {
             const expectedFirstFunctionLine = {
                 lineNum : 1,
-                lineType: 'FunctionDeclaration',
+                lineType: 'function declaration',
                 lineName: 'hello',
+                lineCondition: '',
                 lineValue: ''
             };
             const expectedSecondFunctionLine = {
                 lineNum : 2,
-                lineType: 'FunctionDeclaration',
+                lineType: 'function declaration',
                 lineName: 'helloAgain',
+                lineCondition: '',
                 lineValue: ''
             };
             expect(testedElementRows[0]).to.deep.equal(expectedFirstFunctionLine);
