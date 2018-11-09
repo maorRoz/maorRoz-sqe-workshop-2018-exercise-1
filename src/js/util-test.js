@@ -65,3 +65,13 @@ export const createExpectedElseStatement = (lineNum) => {
         lineValue: ''
     };
 };
+
+export const createExpectedWhileStatement = (lineNum,lineCondition) => {
+    return {
+        lineNum,
+        lineType: 'while statement',
+        lineName: '',
+        lineCondition,
+        lineValue: ''
+    };
+};
