@@ -75,3 +75,13 @@ export const createExpectedWhileStatement = (lineNum,lineCondition) => {
         lineValue: ''
     };
 };
+
+export const createExpectedAssignmentStatement = (lineNum,lineName,lineValue) => {
+    return {
+        lineNum,
+        lineType: 'assignment expression',
+        lineName,
+        lineCondition: '',
+        lineValue
+    };
+};
