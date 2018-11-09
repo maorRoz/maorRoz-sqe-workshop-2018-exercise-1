@@ -1,28 +1,32 @@
 /* eslint-disable complexity */
-const binaryExpressionExtractValue = (expression) => {
+const binaryExpressionExtractValue = (expression, parenthesis) => {
     const { left, operator ,right } = expression;
-    return extractValue(left)  + operator + extractValue(right);
+    const binaryValue = extractValue(left, true)  + operator + extractValue(right, true);
+    return parenthesis ? `(${binaryValue})` : binaryValue;
 };
 
 const memberExpressionExtractValue = (expression) => {
-    const { object, property } = expression;
-    return `${extractValue(object)}[${extractValue(property)}]`; 
+    const { object, property, computed } = expression;
+    const propertyValue = extractValue(property);
+    const propertyValueWrap = computed? `[${propertyValue}]` : `.${propertyValue}`;
+    return extractValue(object) + propertyValueWrap;
 };
 
-const unaryExpressionExtractValue = (expression) => {
+const unaryExpressionExtractValue = (expression, parenthesis) => {
     const { argument, operator } = expression;
-    return operator + extractValue(argument);
+    const unaryValue =  operator + extractValue(argument, true);
+    return parenthesis ? `(${unaryValue})` : unaryValue;
 };
 
-export const extractValue = (expression) => {
+export const extractValue = (expression, parenthesis = false) => {
     const { type } = expression;
     switch(type){
     case 'UnaryExpression':
-        return unaryExpressionExtractValue(expression); 
+        return unaryExpressionExtractValue(expression, parenthesis); 
     case 'BinaryExpression': 
-        return binaryExpressionExtractValue(expression);
+        return binaryExpressionExtractValue(expression, parenthesis);
     case 'MemberExpression':
-        return memberExpressionExtractValue(expression);
+        return memberExpressionExtractValue(expression, parenthesis);
     case 'Identifier': 
         return expression.name;
     case 'Literal':
