@@ -1,6 +1,6 @@
 /* eslint-disable max-lines-per-function */
 import { expect } from 'chai';
-import {makeTestableTable } from '../src/js/util-test';
+import {makeTestableTable, createExpectedFunction } from '../src/js/util-test';
 
 describe('Function Tests' , () => {
     let testedElementTable;
@@ -14,13 +14,7 @@ describe('Function Tests' , () => {
             expect(testedElementRows).to.have.lengthOf(1);
         });
         it('Function Line', () => {
-            const expectedFunctionLine = {
-                lineNum : 1,
-                lineType: 'function declaration',
-                lineName: 'hello',
-                lineCondition: '',
-                lineValue: ''
-            };
+            const expectedFunctionLine = createExpectedFunction(1,'hello');
             expect(testedElementRows[0]).to.deep.equal(expectedFunctionLine);
         });
     });
@@ -33,20 +27,8 @@ describe('Function Tests' , () => {
             expect(testedElementRows).to.have.lengthOf(2);
         });
         it('Two Functions Line', () => {
-            const expectedFirstFunctionLine = {
-                lineNum : 1,
-                lineType: 'function declaration',
-                lineName: 'hello',
-                lineCondition: '',
-                lineValue: ''
-            };
-            const expectedSecondFunctionLine = {
-                lineNum : 2,
-                lineType: 'function declaration',
-                lineName: 'helloAgain',
-                lineCondition: '',
-                lineValue: ''
-            };
+            const expectedFirstFunctionLine = createExpectedFunction(1,'hello');
+            const expectedSecondFunctionLine = createExpectedFunction(2,'helloAgain');
             expect(testedElementRows[0]).to.deep.equal(expectedFirstFunctionLine);
             expect(testedElementRows[1]).to.deep.equal(expectedSecondFunctionLine);
         });
