@@ -1,15 +1,15 @@
 import Line from './Line';
+import { extractValue } from '../valueExtractor';
 
 const type = 'Assignment expression';
 
 export default class AssignmentLine extends Line{
-    constructor(lineNum, object){
+    constructor(lineNum, expression){
         super(lineNum, type);
-        const { left , right } = object;
-        const {name} = left;
-        const {value} = right;
+        const { left , right } = expression;
+        const { name } = left;
         this.lineName = name;
-        this.lineValue = value;
+        this.lineValue = extractValue(right);
         
     }
 }

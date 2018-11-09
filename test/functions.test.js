@@ -1,6 +1,6 @@
 /* eslint-disable max-lines-per-function */
 import { expect } from 'chai';
-import {makeTestableTable } from '../util-test';
+import {makeTestableTable } from '../src/js/util-test';
 
 describe('Function Tests' , () => {
     let testedElementTable;

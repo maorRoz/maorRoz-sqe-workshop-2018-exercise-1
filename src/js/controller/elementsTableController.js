@@ -1,12 +1,21 @@
 import FunctionLine from '../model/FunctionLine.js';
 import ElementsTable from '../model/ElementsTable.js';
 import AssignmentLine from '../model/AssignmentLine.js';
+import ReturnLine from '../model/ReturnLine.js';
 import * as ElementsTableUI from '../view/elementsTableUI';
 import VariableLine from '../model/VariableLine';
 
 let ElementsTableModel;
 
-const expressionStatementTabler = (lineNum,expression) => {
+const returnStatementTabler = (lineNum, returnStatement) => {
+    const returnLine = new ReturnLine(lineNum,returnStatement);
+    ElementsTableModel.addRow(returnLine);
+};
+
+const expressionStatementTabler = (lineNum, expressionStatement) => {
+    const { expression } = expressionStatement;
+    const assignmentLine = new AssignmentLine(lineNum, expression);
+    ElementsTableModel.addRow(assignmentLine);
 };
 
 const whileStatementTabler = (lineNum, whileStatement) => {
@@ -69,12 +78,13 @@ const lineTabler = (lineNum, object) =>
     case 'VariableDeclaration':
         variableDeclaratorTabler(lineNum, object); break;
     case 'ExpressionStatement':
-        expressionStatementTabler(object); break;
+        expressionStatementTabler(lineNum,object); break;
     case 'WhileStatement':
         whileStatementTabler(lineNum,object); break;
     case 'IfStatement':
         ifStatementTabler(lineNum,object); break;
     case 'ReturnStatement':
+        returnStatementTabler(lineNum,object); break;
     default:
     }
 };
