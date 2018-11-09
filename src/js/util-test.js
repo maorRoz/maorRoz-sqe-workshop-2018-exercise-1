@@ -35,3 +35,33 @@ export const createExpectedReturnStatement = (lineNum,lineValue) => {
         lineValue
     };
 };
+
+export const createExpectedIfStatement = (lineNum,lineCondition) => {
+    return {
+        lineNum,
+        lineType: 'if statement',
+        lineName: '',
+        lineCondition,
+        lineValue: ''
+    };
+};
+
+export const createExpectedElseIfStatement = (lineNum,lineCondition) => {
+    return {
+        lineNum,
+        lineType: 'else if statement',
+        lineName: '',
+        lineCondition,
+        lineValue: ''
+    };
+};
+
+export const createExpectedElseStatement = (lineNum) => {
+    return {
+        lineNum,
+        lineType: 'else statement',
+        lineName: '',
+        lineCondition: '',
+        lineValue: ''
+    };
+};

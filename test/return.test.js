@@ -13,7 +13,7 @@ describe('Function Tests' , () => {
         it('Element Table length', () => {
             expect(testedElementRows).to.have.lengthOf(2);
         });
-        it('Function Line', () => {
+        it('Return Line', () => {
             const expectedReturnLine = createExpectedReturnStatement(2,'5');
             expect(testedElementRows[1]).to.deep.equal(expectedReturnLine);
         });
@@ -26,7 +26,7 @@ describe('Function Tests' , () => {
         it('Element Table length', () => {
             expect(testedElementRows).to.have.lengthOf(2);
         });
-        it('Function Line', () => {
+        it('Return Line', () => {
             const expectedReturnLine = createExpectedReturnStatement(2,'x');
             expect(testedElementRows[1]).to.deep.equal(expectedReturnLine);
         });
@@ -39,7 +39,7 @@ describe('Function Tests' , () => {
         it('Element Table length', () => {
             expect(testedElementRows).to.have.lengthOf(2);
         });
-        it('Function Line', () => {
+        it('Return Line', () => {
             const expectedReturnLine = createExpectedReturnStatement(2,'x===3');
             expect(testedElementRows[1]).to.deep.equal(expectedReturnLine);
         });

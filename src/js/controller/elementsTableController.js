@@ -30,10 +30,10 @@ const whileStatementTabler = (lineNum, whileStatement) => {
 
 const alternateTabler = (alternate) => {
     if(!alternate) return;
-    const lineNum = ElementsTableModel.CurrentLineNum;
+    const lineNum = ElementsTableModel.CurrentLineNum + 1;
     const { type } = alternate;
     if(type === 'IfStatement'){
-        return ifStatementTabler(lineNum + 1, alternate, true);
+        return ifStatementTabler(lineNum, alternate, true);
     }
     const elseLine = new ElseLine(lineNum);
     ElementsTableModel.addRow(elseLine);
