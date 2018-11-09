@@ -1,6 +1,6 @@
 import Line from './Line';
 
-const type = 'VariableDeclarator';
+const type = 'variable declarator';
 
 export default class VariableLine extends Line{
     constructor(lineNum, object){

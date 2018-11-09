@@ -1,6 +1,6 @@
 import Line from './Line';
 
-const type = 'FunctionDeclaration';
+const type = 'function declaration';
 
 export default class FunctionLine extends Line{
     constructor(lineNum, object){

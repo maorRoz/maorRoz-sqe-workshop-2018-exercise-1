@@ -1,31 +1,10 @@
 import FunctionLine from '../model/FunctionLine.js';
 import ElementsTable from '../model/ElementsTable.js';
-import ParamLine from '../model/ParamLine.js';
 import AssignmentLine from '../model/AssignmentLine.js';
 import * as ElementsTableUI from '../view/elementsTableUI';
 import VariableLine from '../model/VariableLine';
 
 let ElementsTableModel;
-
-
-const assignmentExpression = (expression) => {
-    const {operator} = expression;
-    if(operator !== '='){
-        return;
-    }
-    const { left , right } = expression;
-    const { name } = left;
-    const { value } = right; 
-    ElementsTableModel.setVariable(name,value);
-};
-
-const expressionStatementTabler = (expressionStatement) => {
-    const { expression } = expressionStatement;
-    const { type } = expression;
-    if(type === 'AssignmentExpression'){
-        //      assignmentExpression(expression);
-    }
-};
 
 const whileStatementTabler = (lineNum, whileStatement) => {
     expressionBodyTabler(lineNum,whileStatement.body);
@@ -64,9 +43,7 @@ const expressionBodyTabler = (lineNum, objectStatements) => {
 
 const functionParamTabler = (lineNum, param) => {
     console.log(param);
-    const { type } = param;
-    const functionParamLine = type === 'AssignmentPattern' ? new AssignmentLine(lineNum, param) : new ParamLine(lineNum, param);
-    ElementsTableModel.addRow(functionParamLine);
+    ElementsTableModel.addRow(new VariableLine(lineNum, param));
 };
 
 const functionTabler = (lineNum,functionObject) => {

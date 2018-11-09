@@ -1,22 +1,14 @@
 /* eslint-disable max-lines-per-function */
 import { expect } from 'chai';
-import {parseCode} from '../src/js/code-analyzer';
-import { createElementTable } from '../src/js/controller/elementsTableController';
-
-let testedElementTable;
-let testedElementRows;
-
-const makeTestableTable = (code) => {
-    const parsedCode = parseCode(code);
-    testedElementTable = createElementTable(parsedCode);
-    testedElementRows = testedElementTable.elementRows;
-};
-
+import {makeTestableTable } from '../util-test';
 
 describe('Function Tests' , () => {
+    let testedElementTable;
+    let testedElementRows;
     describe('Function with no arguments', () => {
         before(() => {
-            makeTestableTable('function hello(){}');
+            testedElementTable = makeTestableTable('function hello(){}');
+            testedElementRows = testedElementTable.elementRows;
         });
         it('Element Table length', () => {
             expect(testedElementRows).to.have.lengthOf(1);

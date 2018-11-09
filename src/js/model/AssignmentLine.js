@@ -1,8 +1,8 @@
 import Line from './Line';
 
-const type = 'AssignmentPattern';
+const type = 'Assignment expression';
 
-export default class FunctionLine extends Line{
+export default class AssignmentLine extends Line{
     constructor(lineNum, object){
         super(lineNum, type);
         const { left , right } = object;
