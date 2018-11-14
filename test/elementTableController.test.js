@@ -1,3 +1,4 @@
+/* eslint-disable max-lines-per-function */
 import {expect} from 'chai';
 import {createElementTable, implementElementTableUI} from '../src/js/controller/elementsTableController';
 import ElementsTable from '../src/js/model/ElementsTable';
@@ -16,6 +17,10 @@ describe('Element Table Controller Tests', () => {
     });
 
     it('implementElementTableUI', () => {
-        expect(implementElementTableUI(true)).to.equal(undefined);
+        const mockedUI = {
+            clean: () => null,
+            createTable: () => null
+        };
+        expect(implementElementTableUI(mockedUI)).to.equal(undefined);
     });
 });

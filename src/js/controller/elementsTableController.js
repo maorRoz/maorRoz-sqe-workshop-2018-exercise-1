@@ -2,7 +2,6 @@ import FunctionLine from '../model/FunctionLine';
 import ElementsTable from '../model/ElementsTable';
 import AssignmentLine from '../model/AssignmentLine';
 import ReturnLine from '../model/ReturnLine';
-import * as ElementsTableUI from '../../elementsTableUI';
 import VariableLine from '../model/VariableLine';
 import WhileLine from '../model/WhileLine';
 import IfLine from '../model/IfLine';
@@ -112,7 +111,7 @@ export const createElementTable = (parsedCode) => {
     return ElementsTableModel;
 };
 
-export const implementElementTableUI = () => {
-    ElementsTableUI.clean();
-    ElementsTableUI.createTable(ElementsTableModel);
+export const implementElementTableUI = (ui) => {
+    ui.clean();
+    ui.createTable(ElementsTableModel);
 };
