@@ -67,6 +67,6 @@ describe('Value Extractor Tests', () => {
     describe('Faked Type', () => {
         const fakedExpression = {type: 'fake'};
         const stringResult = extractValue(fakedExpression);
-        expect(stringResult).to.equal(undefined);
+        expect(stringResult).to.equal('');
     });
 });

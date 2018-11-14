@@ -1,3 +1,5 @@
+/* eslint-disable complexity */
+/* eslint-disable max-lines-per-function */
 import FunctionLine from '../model/FunctionLine';
 import ElementsTable from '../model/ElementsTable';
 import AssignmentLine from '../model/AssignmentLine';
@@ -7,6 +9,7 @@ import WhileLine from '../model/WhileLine';
 import IfLine from '../model/IfLine';
 import ElseIfLine from '../model/ElseIfLine';
 import ElseLine from '../model/ElseLine';
+import ForLine from '../model/ForLine';
 
 let ElementsTableModel;
 
@@ -25,6 +28,12 @@ const whileStatementTabler = (whileStatement) => {
     const whileLine = new WhileLine(whileStatement);
     ElementsTableModel.addRow(whileLine);
     expressionBodyTabler(whileStatement.body);
+};
+
+const forStatementTabler = (forStatement) => {
+    const forLine = new ForLine(forStatement);
+    ElementsTableModel.addRow(forLine);
+    expressionBodyTabler(forStatement.body);
 };
 
 const alternateTabler = (alternate) => {
@@ -49,7 +58,7 @@ const ifStatementTabler = (ifStatement, isElse = false) => {
 const variableDeclaratorTabler = (declarationsContainer) => {
     const { declarations } = declarationsContainer;
     for(let i = 0; i < declarations.length; i++){
-        const variableLine = new VariableLine(declarations[i].id);
+        const variableLine = new VariableLine(declarations[i].id, declarations[i].init);
         ElementsTableModel.addRow(variableLine);
     }
 };
@@ -77,7 +86,6 @@ const expressionBodyTabler = (objectStatements) => {
 };
 
 
-// eslint-disable-next-line complexity
 const lineTabler = (object) =>
 {
     const { type } = object;
@@ -90,6 +98,8 @@ const lineTabler = (object) =>
         expressionStatementTabler(object); break;
     case 'WhileStatement':
         whileStatementTabler(object); break;
+    case 'ForStatement':
+        forStatementTabler(object); break;
     case 'IfStatement':
         ifStatementTabler(object); break;
     case 'ReturnStatement':
