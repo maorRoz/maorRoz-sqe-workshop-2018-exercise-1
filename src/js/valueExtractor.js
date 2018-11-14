@@ -1,4 +1,4 @@
-/* eslint-disable complexity */
+
 const binaryExpressionExtractValue = (expression, parenthesis) => {
     const { left, operator ,right } = expression;
     const binaryValue = extractValue(left, true)  + operator + extractValue(right, true);
@@ -30,24 +30,18 @@ const assignmentExpressionExtractValue = (expression, parenthesis) => {
     return parenthesis ? `(${assignmentValue})` : assignmentValue;
 };
 
+const valueTypesMethods = {
+    UnaryExpression: unaryExpressionExtractValue,
+    BinaryExpression: binaryExpressionExtractValue,
+    MemberExpression: memberExpressionExtractValue,
+    UpdateExpression: updateExpressionExtractValue,
+    AssignmentExpression: assignmentExpressionExtractValue,
+    Identifier: (expression) => expression.name,
+    Literal: (expression) => expression.value.toString()
+};
+
 export const extractValue = (expression, parenthesis = false) => {
     const { type } = expression || {};
-    switch(type){
-    case 'UnaryExpression':
-        return unaryExpressionExtractValue(expression, parenthesis); 
-    case 'BinaryExpression': 
-        return binaryExpressionExtractValue(expression, parenthesis);
-    case 'MemberExpression':
-        return memberExpressionExtractValue(expression, parenthesis);
-    case 'UpdateExpression':
-        return updateExpressionExtractValue(expression, parenthesis);
-    case 'AssignmentExpression':
-        return assignmentExpressionExtractValue(expression, parenthesis);
-    case 'Identifier': 
-        return expression.name;
-    case 'Literal':
-        return expression.value.toString();
-    default:
-        return '';
-    }
+    let methodType = valueTypesMethods[type];
+    return methodType ? methodType.call(null,expression,parenthesis) : '';
 };

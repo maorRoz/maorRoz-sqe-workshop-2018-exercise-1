@@ -1,5 +1,3 @@
-/* eslint-disable complexity */
-/* eslint-disable max-lines-per-function */
 import FunctionLine from '../model/FunctionLine';
 import ElementsTable from '../model/ElementsTable';
 import AssignmentLine from '../model/AssignmentLine';
@@ -85,27 +83,21 @@ const expressionBodyTabler = (objectStatements) => {
     }
 };
 
+const tableTypesMethods = {
+    FunctionDeclaration: functionTabler,
+    VariableDeclaration: variableDeclaratorTabler,
+    ExpressionStatement: expressionStatementTabler,
+    WhileStatement: whileStatementTabler,
+    ForStatement: forStatementTabler,
+    IfStatement: ifStatementTabler,
+    ReturnStatement: returnStatementTabler
+};
 
 const lineTabler = (object) =>
 {
     const { type } = object;
-    switch(type){
-    case 'FunctionDeclaration':
-        functionTabler( object); break;
-    case 'VariableDeclaration':
-        variableDeclaratorTabler(object); break;
-    case 'ExpressionStatement':
-        expressionStatementTabler(object); break;
-    case 'WhileStatement':
-        whileStatementTabler(object); break;
-    case 'ForStatement':
-        forStatementTabler(object); break;
-    case 'IfStatement':
-        ifStatementTabler(object); break;
-    case 'ReturnStatement':
-        returnStatementTabler(object); break;
-    default:
-    }
+    let methodType = tableTypesMethods[type];
+    methodType ? methodType.call(null,object) : null;
 };
 
 const bodyTabler = (parsedCodeBody) => {
