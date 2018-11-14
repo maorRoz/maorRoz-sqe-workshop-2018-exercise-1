@@ -1,7 +1,7 @@
 import $ from 'jquery';
 import {parseCode} from './code-analyzer';
 import { createElementTable, implementElementTableUI } from './controller/elementsTableController'; 
-import UI from '../elementsTableUI';
+import * as UI from '../elementsTableUI';
 
 $(document).ready(function () {
     $('#codeSubmissionButton').click(() => {
