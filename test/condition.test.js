@@ -70,6 +70,19 @@ describe('Condition Tests' , () => {
                 expect(testedElementRows[7]).to.deep.equal(expectedElseLine);
             });
         });
+        describe('wtf', () => {
+            beforeEach(() => {
+                testedElementTable = makeTestableTable('function hello(){\nif(x === 1)\nreturn 5;\nelse{\nreturn h;\n}\n}');
+                testedElementRows = testedElementTable.elementRows;
+            });
+            it('Element Table length', () => {
+                expect(testedElementRows).to.have.lengthOf(5);
+            });
+            it('If Line', () => {
+                expect(testedElementRows[1]).to.deep.equal(expectedIfLine);
+                expect(testedElementRows[3]).to.deep.equal(createExpectedElseStatement(4));
+            });
+        });
     });
     describe('If inside If', () => {
         beforeEach(() => {

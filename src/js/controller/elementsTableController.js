@@ -2,7 +2,7 @@ import FunctionLine from '../model/FunctionLine';
 import ElementsTable from '../model/ElementsTable';
 import AssignmentLine from '../model/AssignmentLine';
 import ReturnLine from '../model/ReturnLine';
-import * as ElementsTableUI from '../view/elementsTableUI';
+import * as ElementsTableUI from '../../elementsTableUI';
 import VariableLine from '../model/VariableLine';
 import WhileLine from '../model/WhileLine';
 import IfLine from '../model/IfLine';
