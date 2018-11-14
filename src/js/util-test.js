@@ -76,6 +76,16 @@ export const createExpectedWhileStatement = (lineNum,lineCondition) => {
     };
 };
 
+export const createExpectedForStatement = (lineNum,lineCondition) => {
+    return {
+        lineNum,
+        lineType: 'for statement',
+        lineName: '',
+        lineCondition,
+        lineValue: ''
+    };
+};
+
 export const createExpectedAssignmentStatement = (lineNum,lineName,lineValue) => {
     return {
         lineNum,

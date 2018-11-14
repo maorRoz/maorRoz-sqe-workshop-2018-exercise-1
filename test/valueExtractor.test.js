@@ -52,6 +52,35 @@ describe('Value Extractor Tests', () => {
         });
     });
 
+    describe('UpdateExpression', () => {
+        it('UpdateExpression', () => {
+            const updateExpression = { type: 'UpdateExpression', operator: '--', argument: {type: 'Literal', value: 2}};
+            const stringResult = extractValue(updateExpression);
+            expect(stringResult).to.equal('--2');
+        });
+        it('UpdateExpression with parenthesis', () => {
+            const updateExpression = { type: 'UpdateExpression', operator: '++', argument: { type: 'Identifier', name: 'i'}};
+            const stringResult = extractValue(updateExpression, true);
+            expect(stringResult).to.equal('(++i)');
+        });
+    });
+
+    
+    describe('AssignmentExpression', () => {
+        it('AssignmentExpression', () => {
+            const assignmentExpression = { type: 'AssignmentExpression', operator: '=', left: { type: 'Identifier', name: 'n'}, right: { type: 'Identifier', name: 'm'}};
+            const stringResult = extractValue(assignmentExpression);
+            expect(stringResult).to.equal('n=m');
+        });
+        it('AssignmentExpression with parenthesis', () => {
+            const assignmentExpression = { type: 'AssignmentExpression', operator: '=', left: { type: 'Identifier', name: 'i'}, right: {type: 'Literal', value: 5}};
+            const stringResult = extractValue(assignmentExpression, true);
+            expect(stringResult).to.equal('(i=5)');
+        });
+    });
+
+
+
     describe('Identifier', () => {
         const identifierExpression = { type: 'Identifier', name: 'id'};
         const stringResult = extractValue(identifierExpression);
