@@ -11,100 +11,97 @@ import ElseLine from '../model/ElseLine';
 
 let ElementsTableModel;
 
-const returnStatementTabler = (lineNum, returnStatement) => {
-    const returnLine = new ReturnLine(lineNum,returnStatement);
+const returnStatementTabler = (returnStatement) => {
+    const returnLine = new ReturnLine(returnStatement);
     ElementsTableModel.addRow(returnLine);
 };
 
-const expressionStatementTabler = (lineNum, expressionStatement) => {
+const expressionStatementTabler = (expressionStatement) => {
     const { expression } = expressionStatement;
-    const assignmentLine = new AssignmentLine(lineNum, expression);
+    const assignmentLine = new AssignmentLine(expression);
     ElementsTableModel.addRow(assignmentLine);
 };
 
-const whileStatementTabler = (lineNum, whileStatement) => {
-    const whileLine = new WhileLine(lineNum, whileStatement);
+const whileStatementTabler = (whileStatement) => {
+    const whileLine = new WhileLine(whileStatement);
     ElementsTableModel.addRow(whileLine);
-    expressionBodyTabler(lineNum,whileStatement.body);
+    expressionBodyTabler(whileStatement.body);
 };
 
 const alternateTabler = (alternate) => {
     if(!alternate) return;
-    const lineNum = ElementsTableModel.CurrentLineNum + 1;
     const { type } = alternate;
     if(type === 'IfStatement'){
-        return ifStatementTabler(lineNum, alternate, true);
+        return ifStatementTabler(alternate, true);
     }
-    const elseLine = new ElseLine(lineNum);
+    const elseLine = new ElseLine(alternate);
     ElementsTableModel.addRow(elseLine);
-    expressionBodyTabler(lineNum,alternate);
+    expressionBodyTabler(alternate);
 };
 
-const ifStatementTabler = (lineNum, ifStatement, isElse = false) => {
-    const ifLine = isElse ? new ElseIfLine(lineNum, ifStatement) : new IfLine(lineNum,ifStatement);
+const ifStatementTabler = (ifStatement, isElse = false) => {
+    const ifLine = isElse ? new ElseIfLine(ifStatement) : new IfLine(ifStatement);
     ElementsTableModel.addRow(ifLine);
     const { alternate, consequent} = ifStatement;
-    expressionBodyTabler(lineNum , consequent);
+    expressionBodyTabler(consequent);
     alternateTabler(alternate);
 };
 
-const variableDeclaratorTabler = (lineNum, declarationsContainer) => {
+const variableDeclaratorTabler = (declarationsContainer) => {
     const { declarations } = declarationsContainer;
     for(let i = 0; i < declarations.length; i++){
-        const variableLine = new VariableLine(lineNum, declarations[i].id);
+        const variableLine = new VariableLine(declarations[i].id);
         ElementsTableModel.addRow(variableLine);
     }
 };
 
-const functionParamTabler = (lineNum, param) => {
-    ElementsTableModel.addRow(new VariableLine(lineNum, param));
+const functionParamTabler = (param) => {
+    ElementsTableModel.addRow(new VariableLine(param));
 };
 
-const functionTabler = (lineNum,functionObject) => {
-    const functionLine = new FunctionLine(lineNum,functionObject);
+const functionTabler = (functionObject) => {
+    const functionLine = new FunctionLine(functionObject);
     ElementsTableModel.addRow(functionLine);
     const { params, body } = functionObject;
-    params.forEach(param => functionParamTabler(lineNum, param));
-    expressionBodyTabler(lineNum, body);
+    params.forEach(param => functionParamTabler(param));
+    expressionBodyTabler(body);
 };
 
-const expressionBodyTabler = (lineNum, objectStatements) => {
+const expressionBodyTabler = (objectStatements) => {
     const { type, body } = objectStatements;
     if(type !== 'BlockStatement'){
-        return lineTabler(lineNum + 1, objectStatements);
+        return lineTabler(objectStatements);
     }
     for(let i = 0; i < body.length; i++){
-        lineNum = ElementsTableModel.CurrentLineNum;
-        lineTabler(lineNum + 1, body[i]);
+        lineTabler(body[i]);
     }
 };
 
 
 // eslint-disable-next-line complexity
-const lineTabler = (lineNum, object) =>
+const lineTabler = (object) =>
 {
     const { type } = object;
     switch(type){
     case 'FunctionDeclaration':
-        functionTabler(lineNum, object); break;
+        functionTabler( object); break;
     case 'VariableDeclaration':
-        variableDeclaratorTabler(lineNum, object); break;
+        variableDeclaratorTabler(object); break;
     case 'ExpressionStatement':
-        expressionStatementTabler(lineNum,object); break;
+        expressionStatementTabler(object); break;
     case 'WhileStatement':
-        whileStatementTabler(lineNum,object); break;
+        whileStatementTabler(object); break;
     case 'IfStatement':
-        ifStatementTabler(lineNum,object); break;
+        ifStatementTabler(object); break;
     case 'ReturnStatement':
-        returnStatementTabler(lineNum,object); break;
+        returnStatementTabler(object); break;
     default:
     }
 };
 
 const bodyTabler = (parsedCodeBody) => {
     for(let i = 0 ; i < parsedCodeBody.length ; i++){
-        let lineNum  = ElementsTableModel.CurrentLineNum + 1;
-        lineTabler(lineNum,parsedCodeBody[i]);
+        lineTabler(parsedCodeBody[i]);
     }
 };
 

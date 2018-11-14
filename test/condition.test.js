@@ -11,7 +11,7 @@ describe('Condition Tests' , () => {
     const expectedFirstElseIfLine = createExpectedElseIfStatement(4,'x===2');
     const expectedReturnZ = createExpectedReturnStatement(5,'z');
     const expectedSecondElseIfLine = createExpectedElseIfStatement(6,'x===3');
-    const expectedElseLine = createExpectedElseStatement(8);
+    const expectedElseLine = createExpectedElseStatement(9);
     describe('Only If', () => {
         beforeEach(() => {
             testedElementTable = makeTestableTable('function hello(){\nif(x === 1)\nreturn y;\n}');

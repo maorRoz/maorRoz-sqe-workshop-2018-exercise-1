@@ -4,9 +4,9 @@ import { extractValue } from '../valueExtractor';
 const type = 'assignment expression';
 
 export default class AssignmentLine extends Line{
-    constructor(lineNum, expression){
-        super(lineNum, type);
-        const { left , right } = expression;
+    constructor(expression){
+        const { left , right, loc } = expression;
+        super(loc, type);
         const { name } = left;
         this.lineName = name;
         this.lineValue = extractValue(right);

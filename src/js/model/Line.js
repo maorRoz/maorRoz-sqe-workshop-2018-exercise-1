@@ -1,6 +1,7 @@
 export default class Line {
-    constructor(lineNum, lineType){
-        this.lineNum = lineNum;
+    constructor(lineLocation, lineType){
+        const { line } = lineLocation.start;
+        this.lineNum = line;
         this.lineType = lineType;
         this.lineName = '';
         this.lineCondition = '';

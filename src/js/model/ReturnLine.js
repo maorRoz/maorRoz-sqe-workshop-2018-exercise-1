@@ -4,9 +4,9 @@ import { extractValue } from '../valueExtractor';
 const type = 'return statement';
 
 export default class ReturnLine extends Line{
-    constructor(lineNum, statement){
-        super(lineNum, type);
+    constructor(statement){
         const { argument } = statement;
+        super(argument.loc, type);
         this.lineValue = extractValue(argument);
     }
 }

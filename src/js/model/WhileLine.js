@@ -4,9 +4,9 @@ import { extractValue } from '../valueExtractor';
 const type = 'while statement';
 
 export default class WhileLine extends Line{
-    constructor(lineNum, statement){
-        super(lineNum, type);
+    constructor(statement){
         const { test } = statement;
+        super(test.loc, type);
         this.lineCondition = extractValue(test);
         
     }

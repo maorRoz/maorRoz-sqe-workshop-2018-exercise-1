@@ -4,9 +4,9 @@ import { extractValue } from '../valueExtractor';
 const type = 'if statement';
 
 export default class IfLine extends Line{
-    constructor(lineNum, statement){
-        super(lineNum, type);
+    constructor(statement){
         const { test } = statement;
+        super(test.loc, type);
         this.lineCondition = extractValue(test);
         
     }
