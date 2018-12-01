@@ -110,6 +110,7 @@ export const createElementTable = (parsedCode) => {
     const { body } = parsedCode;
     ElementsTableModel = new ElementsTable();
     bodyTabler(body);
+    global.ElementsTableModel = ElementsTableModel;
     return ElementsTableModel;
 };
 
